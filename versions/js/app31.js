@@ -3,14 +3,12 @@ var ReactDOM = require('react-dom');
 var _ = require('lodash');
 
 var AptList = require('./AptList');
-var LoginSubcomponent = require('./LoginSubcomponent');
+var AddAppointment = require('./AddAppointment');
 
 var MainInterface = React.createClass({
   getInitialState: function() {
     return {
-      myAppointments: [],
-      emailUsername: '',
-      password: ''
+      myAppointments: []
     } //return
   }, //getInitialState
 
@@ -35,21 +33,6 @@ var MainInterface = React.createClass({
     }); //setState
   }, //deleteMessage
 
-  mainHandleLogin: function(loginCredentials) {
-    var subuserName = loginCredentials.userName;
-    var subpassword = loginCredentials.password;
-    console.log(subuserName);
-    console.log(subpassword);
-    /*this.setState( {      
-      emailUsername : subuserName,  
-      password: subpassword
-    }); //setState */
-    this.setState( {      
-      emailUsername : subuserName,
-      password : subpassword
-      }); //setState 
-  }, //mainHandleLogin
-
   render: function() {
     var filteredApts = this.state.myAppointments;
     filteredApts = filteredApts.map(function(item, index) {
@@ -62,11 +45,7 @@ var MainInterface = React.createClass({
     }.bind(this)); //filteredApts.map
     return (
       <div className="interface">
-        <LoginSubcomponent 
-        subHandleLogin = {this.mainHandleLogin}
-        subUsername = {this.state.emailUsername}
-        subPassword = {this.state.password}
-        />
+        <AddAppointment />
         <ul className="item-list media-list">{filteredApts}</ul>
       </div>
     ) //return
@@ -75,5 +54,5 @@ var MainInterface = React.createClass({
 
 ReactDOM.render(
   <MainInterface />,
-  document.getElementById('ubsUploads')
+  document.getElementById('petAppointments')
 ); //render

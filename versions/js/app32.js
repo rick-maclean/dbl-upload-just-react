@@ -3,14 +3,13 @@ var ReactDOM = require('react-dom');
 var _ = require('lodash');
 
 var AptList = require('./AptList');
-var LoginSubcomponent = require('./LoginSubcomponent');
+var AddAppointment = require('./AddAppointment');
 
 var MainInterface = React.createClass({
   getInitialState: function() {
     return {
-      myAppointments: [],
-      emailUsername: '',
-      password: ''
+      aptBodyVisible: false, //so by default the form is hidden
+      myAppointments: []
     } //return
   }, //getInitialState
 
@@ -35,20 +34,12 @@ var MainInterface = React.createClass({
     }); //setState
   }, //deleteMessage
 
-  mainHandleLogin: function(loginCredentials) {
-    var subuserName = loginCredentials.userName;
-    var subpassword = loginCredentials.password;
-    console.log(subuserName);
-    console.log(subpassword);
-    /*this.setState( {      
-      emailUsername : subuserName,  
-      password: subpassword
-    }); //setState */
-    this.setState( {      
-      emailUsername : subuserName,
-      password : subpassword
-      }); //setState 
-  }, //mainHandleLogin
+  mainToggleAddDisplay: function () {
+    var tempVisibility = !this.state.aptBodyVisible;  //note get the opposite of this bool
+    this.setState( {
+      aptBodyVisible: tempVisibility
+    }); //setState
+  }, //mainToggleAddDisplay
 
   render: function() {
     var filteredApts = this.state.myAppointments;
@@ -62,18 +53,20 @@ var MainInterface = React.createClass({
     }.bind(this)); //filteredApts.map
     return (
       <div className="interface">
-        <LoginSubcomponent 
-        subHandleLogin = {this.mainHandleLogin}
-        subUsername = {this.state.emailUsername}
-        subPassword = {this.state.password}
-        />
+        <AddAppointment 
+          bodyVisible = { this.state.aptBodyVisible }
+          handleToggle = { this.mainToggleAddDisplay }
+        /> 
         <ul className="item-list media-list">{filteredApts}</ul>
       </div>
-    ) //return
+    ) //return    
+    //Note AddAppointment is a call to the component AddAppointment
+    // we will pass a parameter bodyVisible just like we have parameters for AptList above
+
   } //render
 }); //MainInterface
 
 ReactDOM.render(
   <MainInterface />,
-  document.getElementById('ubsUploads')
+  document.getElementById('petAppointments')
 ); //render
