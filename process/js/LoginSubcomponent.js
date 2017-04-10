@@ -6,7 +6,7 @@ var LoginSubcomponent = React.createClass({
   localHandleLogin: function (e) {
     //note we will be acccessing the input fields via the ref attributes
     // eg ref="inputOwnerName"
-    //note it receives an event handler  e   
+    //note it receives an event handler  e
     //(note all functions have e passed to it but we might not use it as in localToggleAptDisplay)
     var tempLoginCredentials = {
       userName: this.refs.inputEmail.value,
@@ -18,7 +18,7 @@ var LoginSubcomponent = React.createClass({
             //normal behavior is to cause a reload and sending of the information to a server
     this.props.subHandleLogin(tempLoginCredentials);  //pass tempItem to this prop in main
   }, //localHandleLogin
-  
+
 
    render: function() {
     return(
@@ -28,14 +28,14 @@ var LoginSubcomponent = React.createClass({
         <div className="panel-body">
           <form className="form-signin form-horizontal" onSubmit={this.localHandleLogin}>
             <div className="form-group">
-              <label className="col-sm-2 control-label" for="inputEmail">Username</label>
+              <label className="col-sm-2 control-label" htmlFor="inputEmail">Username</label>
               <div className="col-sm-10">
                 <input type="email" className="form-control"
                   id="inputEmail" ref="inputEmail" placeholder="Email address" />
               </div>
             </div>
             <div className="form-group">
-              <label className="col-sm-2 control-label" for="inputPassword">Password</label>
+              <label className="col-sm-2 control-label" htmlFor="inputPassword">Password</label>
               <div className="col-sm-10">
                 <input type="password" className="form-control"
                   id="inputPassword" ref="inputPassword" placeholder="Password" />
@@ -46,7 +46,7 @@ var LoginSubcomponent = React.createClass({
                         <input type="checkbox" value="remember-me"/> Remember me
                     </label>
                 </div>
-            
+
 
             <div className="form-group">
               <div className="col-sm-offset-2 col-sm-10">

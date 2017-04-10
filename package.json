@@ -1,13 +1,14 @@
 {
   "name": "reatInterface",
   "version": "0.0.1",
-  "description": "Project for Building an Interface with React Course on Lynda.com",
+  "description": "Project for Building USB upload for audio files etc",
   "repository": {
     "type": "git",
     "url": "https://github.com/planetoftheweb/reactinterface.git"
   },
-  "author": "Ray Villalobos",
+  "author": "Rick MacLean",
   "devDependencies": {
+    "electron": "^1.6.2",
     "gulp": "^3.8.8",
     "gulp-browserify": "^0.5.1",
     "gulp-react": "^3.1.0",
@@ -17,5 +18,11 @@
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
     "reactify": "^1.1.1"
+  },
+  "dependencies": {
+    "electron-json-storage": "^3.0.4",
+    "rc-progress": "^2.1.0",
+    "react-progress": "0.0.12",
+    "react-progressbar": "^1.4.6"
   }
 }
